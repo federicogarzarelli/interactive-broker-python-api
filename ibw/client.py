@@ -2142,3 +2142,34 @@ class IBClient():
         )
 
         return content
+
+    def portfolio_performance(self, account_id: str, freq: str, check: bool = False) -> Dict:
+        """
+            Returns the performance (MTM) for the given accounts,
+            if more than one account is passed, the result is consolidated.
+
+            NAME: account_id
+            DESC: The account ID you wish to set for the API Session. This will be used to
+                  grab historical data and make orders.
+            TYPE: String
+
+            NAME: freq
+            DESC: Frequency of cumulative performance data points: 'D'aily, 'M'onthly,'Q'uarterly.
+            TYPE: String
+        """
+
+        # define request components
+        endpoint = 'pa/performance'
+        req_type = 'POST'
+        params = {
+            'acctIds': account_id,
+            'freq' : freq
+        }
+
+        content = self._make_request(
+            endpoint=endpoint,
+            req_type=req_type,
+            params=params
+        )
+
+        return content
