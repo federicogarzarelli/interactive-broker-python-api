@@ -2159,17 +2159,17 @@ class IBClient():
         """
 
         # define request components
-        endpoint = 'pa/performance'
+        endpoint = r'pa/performance'
         req_type = 'POST'
-        params = {
-            'acctIds': account_id,
-            'freq' : freq
+        payload = {
+            "acctIds": [account_id],
+            "freq": thisfreq
         }
 
         content = self._make_request(
             endpoint=endpoint,
             req_type=req_type,
-            params=params
+            json=payload
         )
 
         return content
