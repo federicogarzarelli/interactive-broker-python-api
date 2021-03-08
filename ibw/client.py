@@ -1358,6 +1358,27 @@ class IBClient():
 
         return content
 
+    def contract_details_rules(self, conid: str) -> Dict:
+        """
+            Get contract details, you can use this to prefill your order before you submit an order.
+
+            NAME: conid
+            DESC: The contract ID you wish to get details for.
+            TYPE: String
+
+            RTYPE: Dictionary
+        """
+
+        # define the request components
+        endpoint = '/iserver/contract/{conid}/info-and-rules'.format(conid=conid)
+        req_type = 'GET'
+        content = self._make_request(
+            endpoint=endpoint,
+            req_type=req_type
+        )
+
+        return content
+
     def contracts_definitions(self, conids: List[str]) -> Dict:
         """
             Returns a list of security definitions for the given conids.
